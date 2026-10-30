@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | fenwk0 · Ada Tooling</title>
+  <meta name="description" content="Developer tooling for the Ada programming language: an IntelliJ IDEA plugin concept and an Alire integration concept.">
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-bar">
+    <a class="brand" href="index.html">fenwk0 · Ada Tooling</a>
+    <nav class="nav-links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      <span class="material-symbols-outlined">dark_mode</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Tools for the Ada language</h1>
+      <p>Ada is a strongly typed language used where reliability matters most, from avionics to rail signalling.
+        This site collects two developer-tooling ideas that would make Ada easier to write in a modern workflow.</p>
+    </section>
+
+    <section class="cards" aria-label="Plugin overview">
+      <a class="card" href="ada-intellij-plugin.html">
+        <span class="material-symbols-outlined">code_blocks</span>
+        <h2>Ada IntelliJ Plugin</h2>
+        <p>An IDE plugin concept that brings Ada editing, navigation, and diagnostics to IntelliJ IDEA and other JetBrains IDEs.</p>
+        <span class="link-label">Read more &rarr;</span>
+      </a>
+
+      <a class="card" href="alire-plugin.html">
+        <span class="material-symbols-outlined">inventory_2</span>
+        <h2>Alire Plugin</h2>
+        <p>A concept for managing Alire crates, dependencies, and builds from inside the IDE without leaving the editor.</p>
+        <span class="link-label">Read more &rarr;</span>
+      </a>
+    </section>
+
+    <section class="surface" style="margin-top: 2.5rem;">
+      <h2>Why Ada?</h2>
+      <p>Ada was designed in the late 1970s for large, long-lived systems. Its strong typing, built-in
+        tasking and protected objects, and run-time checks catch many classes of errors early. The
+        <a href="https://www.adaic.org/">Ada Information Clearinghouse</a> and
+        <a href="https://alire.ada.dev/">Alire</a> are good places to learn more about the language and its
+        ecosystem.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 fenwk0. Built as a static site.</p>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

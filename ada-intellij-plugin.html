@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ada IntelliJ Plugin | fenwk0 · Ada Tooling</title>
+  <meta name="description" content="A concept for an Ada language plugin for IntelliJ IDEA, and how it could work.">
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-bar">
+    <a class="brand" href="index.html">fenwk0 · Ada Tooling</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      <span class="material-symbols-outlined">dark_mode</span>
+    </button>
+  </header>
+
+  <main>
+    <p><a href="index.html">&larr; Back to home</a></p>
+    <h1>Ada IntelliJ Plugin</h1>
+    <p class="lead">A proposed plugin that adds Ada support to IntelliJ IDEA and other JetBrains IDEs.</p>
+
+    <section class="surface">
+      <h2>Overview</h2>
+      <p>Ada has mature free tools, including the GNAT compiler and AdaCore's Ada Language Server, but JetBrains
+        IDEs have no official Ada support. This plugin would bring Ada into the same environment many developers
+        already use for other languages, with the editing features people expect: highlighting, completion,
+        navigation, refactoring, and inline diagnostics.</p>
+      <p class="note">Status: this is a design concept. We did not find an official or published Ada plugin in the
+        JetBrains Marketplace when researching this page.</p>
+    </section>
+
+    <section class="surface">
+      <h2>Planned features</h2>
+      <ul>
+        <li>Syntax highlighting and code formatting for <code>.ads</code> and <code>.adb</code> files.</li>
+        <li>Code completion, go-to-definition, find usages, and symbol search.</li>
+        <li>Inline errors and warnings from the compiler and language server.</li>
+        <li>Project structure support for GNAT project files (<code>.gpr</code>).</li>
+        <li>Run and debug configurations for Ada executables.</li>
+      </ul>
+    </section>
+
+    <section class="surface">
+      <h2>How it might work</h2>
+      <p>The plugin would be a thin layer over existing tools rather than a new Ada compiler. Its parts could be:</p>
+      <ol>
+        <li><strong>File recognition.</strong> Register Ada file types and provide a lexer and syntax highlighter
+          for keywords, string and character literals, comments, and attributes.</li>
+        <li><strong>Language server client.</strong> Starts <code>ada_language_server</code> and talks to it over the
+          Language Server Protocol. IntelliJ 2023.2 and later include built-in LSP support, so completion,
+          hover, diagnostics, and navigation can come from the server instead of being reimplemented.</li>
+        <li><strong>Project model.</strong> Read the <code>.gpr</code> project file to find source directories,
+          object directories, and the main subprogram, then pass that information to the server and the run
+          configurations.</li>
+        <li><strong>Build and run.</strong> Wrap <code>gprbuild</code> in IntelliJ build actions, parse its output
+          into the Problems view, and offer a run configuration that starts the built executable.</li>
+        <li><strong>Debugging (later).</strong> Connect to <code>gdb</code> through the IDE's debugger
+          interface once the basics are stable.</li>
+      </ol>
+    </section>
+
+    <section class="surface">
+      <h2>Development approach</h2>
+      <ul>
+        <li>Build with the IntelliJ Platform Gradle plugin and the IntelliJ Platform SDK.</li>
+        <li>Start with highlighting and LSP integration, then add build and run support.</li>
+        <li>Publish to the JetBrains Marketplace once the core features are stable.</li>
+      </ul>
+    </section>
+
+    <section class="surface">
+      <h2>Learn more</h2>
+      <p>Read about the language at the <a href="https://www.adaic.org/">Ada Information Clearinghouse</a> and
+        AdaCore's <a href="https://www.adacore.com/about-ada">overview of Ada</a>. The companion
+        <a href="alire-plugin.html">Alire plugin</a> covers dependency management.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 fenwk0. Built as a static site.</p>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>

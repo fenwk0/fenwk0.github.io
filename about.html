@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | fenwk0 · Ada Tooling</title>
+  <meta name="description" content="About fenwk0 and this Ada tooling site.">
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-bar">
+    <a class="brand" href="index.html">fenwk0 · Ada Tooling</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      <span class="material-symbols-outlined">dark_mode</span>
+    </button>
+  </header>
+
+  <main>
+    <h1>About us</h1>
+    <section class="surface">
+      <p class="lead">This site is a small, independent project exploring developer tools for Ada, a language
+        built for safety-critical and high-integrity software.</p>
+      <p>Our focus is on the everyday experience of writing Ada: editing, navigating a codebase, managing
+        third-party libraries, and building. Most of the modern tooling people take for granted in other
+        languages is either missing or scattered across command-line tools and separate editors.</p>
+    </section>
+
+    <section class="surface">
+      <h2>What we are working on</h2>
+      <ul>
+        <li><strong>An IntelliJ IDEA plugin</strong> for Ada source files, with syntax highlighting, navigation,
+          and diagnostics. See the <a href="ada-intellij-plugin.html">plugin overview</a>.</li>
+        <li><strong>An Alire plugin</strong> that brings the Alire package manager into the IDE. See the
+          <a href="alire-plugin.html">plugin overview</a>.</li>
+      </ul>
+    </section>
+
+    <section class="surface">
+      <h2>About Ada</h2>
+      <p>Ada is a general-purpose language standardised by ISO. It is used in aerospace, defence, rail, and
+        other industries where software failures are costly. It includes strong typing, built-in concurrency
+        through tasks and protected objects, and optional run-time checks. The
+        <a href="https://www.adaic.org/">Ada Information Clearinghouse</a> is a good starting point for learning
+        more.</p>
+      <p>The <a href="https://alire.ada.dev/">Alire</a> project maintains a community catalogue of Ada and SPARK
+        libraries, along with the <code>alr</code> command-line tool for fetching and building them.</p>
+    </section>
+
+    <section class="surface">
+      <h2>Our principles</h2>
+      <ul>
+        <li>Build on existing open tools rather than replacing them.</li>
+        <li>Keep the sites simple and fast, with no tracking.</li>
+        <li>Credit the Ada and Alire communities for the work this project depends on.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 fenwk0. Built as a static site.</p>
+  </footer>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>
